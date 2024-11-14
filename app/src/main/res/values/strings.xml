@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Clothes Store</string>
+    <string name="favourites_icon">Favourites Icon</string>
 </resources>

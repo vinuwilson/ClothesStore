@@ -1,8 +1,6 @@
 package com.example.clothesstore.data.remote.repository
 
 import com.example.clothesstore.data.remote.api.ProductApi
-import com.example.clothesstore.data.remote.dto.ProductDto
-import com.example.clothesstore.data.remote.dto.ProductListDto
 import com.example.clothesstore.domain.model.Product
 import com.example.clothesstore.domain.model.ProductMapper
 import kotlinx.coroutines.flow.Flow
