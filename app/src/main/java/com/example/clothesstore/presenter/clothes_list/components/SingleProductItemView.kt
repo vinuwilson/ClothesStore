@@ -1,6 +1,7 @@
 package com.example.clothesstore.presenter.clothes_list.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -26,14 +27,16 @@ import com.example.clothesstore.utils.CoilImage
 
 @Composable
 fun SingleProductItemView(
-    product: Product
+    product: Product,
+    onItemClicked: (String) -> Unit
 ) {
     val context = LocalContext.current
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .height(dimensionResource(R.dimen.card_view_height))
-            .padding(dimensionResource(R.dimen.card_view_padding)),
+            .padding(dimensionResource(R.dimen.card_view_padding))
+            .clickable { onItemClicked(product.productId) },
         elevation = CardDefaults.elevatedCardElevation(dimensionResource(R.dimen.card_view_elevation)),
         colors = CardDefaults.cardColors(contentColor = MaterialTheme.colorScheme.onPrimary)
     ) {
@@ -93,6 +96,7 @@ fun SingleProductItemViewPreview() {
             stock = 3,
             oldPrice = 8.99,
             productId = "1"
-        )
+        ),
+        onItemClicked = {}
     )
 }

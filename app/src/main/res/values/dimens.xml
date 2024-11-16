@@ -7,4 +7,9 @@
     <dimen name="small_font_size">12.sp</dimen>
     <dimen name="large_font_size">22.sp</dimen>
     <dimen name="favourite_padding">5.sp</dimen>
+    <dimen name="medium_font_size">18.sp</dimen>
+    <dimen name="extra_large_font_size">26.sp</dimen>
+    <dimen name="divider_thickness">1.dp</dimen>
+    <dimen name="app_padding">12.dp</dimen>
+    <dimen name="button_text_padding">6.dp</dimen>
 </resources>

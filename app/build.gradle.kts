@@ -40,9 +40,6 @@ android {
     buildFeatures {
         compose = true
     }
-//    composeOptions {
-//        kotlinCompilerExtensionVersion = "1.5.1"
-//    }
 }
 
 dependencies {
@@ -82,6 +79,7 @@ dependencies {
     implementation (libs.androidx.room.ktx)
 
     implementation (libs.androidx.material)
+    implementation (libs.androidx.material.icons.extended)
 
     testImplementation(libs.junit)
     testImplementation(libs.mockito.kotlin)

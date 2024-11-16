@@ -25,6 +25,7 @@ core-testing = "2.2.0"
 kotlinx-coroutines-test = "1.7.1"
 roomTesting = "2.6.1"
 junitJupiter = "5.8.1"
+materialIconsExtended = "1.7.5"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -59,6 +60,7 @@ androidx-core-testing = { group = "androidx.arch.core", name = "core-testing", v
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinx-coroutines-test" }
 androidx-room-testing = { module = "androidx.room:room-testing", version.ref = "roomTesting" }
 junit-jupiter = { group = "org.junit.jupiter", name = "junit-jupiter", version.ref = "junitJupiter" }
+androidx-material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIconsExtended" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -1,4 +1,17 @@
 <resources>
     <string name="app_name">Clothes Store</string>
     <string name="favourites_icon">Favourites Icon</string>
+    <string name="catalogue_top_bar">Catalogue</string>
+    <string name="catalogue">CATALOGUE</string>
+    <string name="wishlist">WISHLIST</string>
+    <string name="basket">BASKET</string>
+    <string name="model_close_icon">Model close icon</string>
+    <string name="product_details">Product details</string>
+    <string name="in_stock">In Stock</string>
+    <string name="out_of_stock">Out Of Stock</string>
+    <string name="name">NAME</string>
+    <string name="category">CATEGORY</string>
+    <string name="amount_in_stock">AMOUNT IN STOCK</string>
+    <string name="wish_list">WISH LIST</string>
+    <string name="add_to_cart">ADD TO CART</string>
 </resources>

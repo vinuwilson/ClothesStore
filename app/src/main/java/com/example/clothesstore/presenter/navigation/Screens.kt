@@ -6,4 +6,15 @@ import kotlinx.serialization.Serializable
 object ClothesInfo
 
 @Serializable
-object ClothesListScreen
+object CatalogueScreen
+
+@Serializable
+object WishlistScreen
+
+@Serializable
+object BasketScreen
+
+@Serializable
+data class ClothesDetailsScreen(
+    val productId : String
+)

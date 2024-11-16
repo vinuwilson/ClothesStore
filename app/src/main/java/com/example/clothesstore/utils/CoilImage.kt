@@ -17,11 +17,11 @@ fun CoilImage(
     modifier: Modifier = Modifier,
     context: Context,
     imageUri: String?,
-    placeholder: Int = R.drawable.ic_launcher_background
+    placeholder: Int = R.drawable.placeholder_image
 ) {
     if (imageUri.isNullOrEmpty()) {
         Image(
-            painter = painterResource(id = R.drawable.ic_launcher_background),
+            painter = painterResource(id = R.drawable.placeholder_image),
             contentDescription = "Product image",
             contentScale = ContentScale.Crop,
             modifier = modifier
@@ -35,7 +35,7 @@ fun CoilImage(
                 .placeholder(placeholder)
                 .build(),
             contentDescription = "Product image",
-            error = painterResource(id = R.drawable.ic_launcher_background),
+            error = painterResource(id = R.drawable.placeholder_image),
             contentScale = ContentScale.Inside,
             modifier = Modifier.padding(12.dp)
         )
