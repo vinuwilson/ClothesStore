@@ -2,7 +2,6 @@ package com.example.clothesstore.domain.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.clothesstore.data.remote.dto.ProductDto
 
 @Entity(tableName = "basket_tbl")
 data class BasketEntity(

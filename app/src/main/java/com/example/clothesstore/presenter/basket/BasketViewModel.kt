@@ -3,11 +3,9 @@ package com.example.clothesstore.presenter.basket
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.clothesstore.domain.model.BasketEntity
-import com.example.clothesstore.domain.model.Product
 import com.example.clothesstore.domain.usecase.basket.AddToBasket
 import com.example.clothesstore.domain.usecase.basket.DeleteItem
 import com.example.clothesstore.domain.usecase.basket.GetAllItems
-import com.example.clothesstore.presenter.wish_list.WishlistState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
