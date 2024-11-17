@@ -1,6 +1,6 @@
 package com.example.clothesstore.presenter.clothes_details.components
 
-import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -18,6 +19,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -37,9 +40,9 @@ fun DetailsInfoView(
     ) {
 
         Row(
-           Modifier.height((LocalConfiguration.current.screenHeightDp/3F).dp)
+            Modifier.height((LocalConfiguration.current.screenHeightDp / 3F).dp)
         ) {
-            Column(
+            Box(
                 Modifier.weight(1f)
             ) {
                 CoilImage(
@@ -49,31 +52,51 @@ fun DetailsInfoView(
                         .fillMaxSize()
                 )
             }
-            Column(
-                modifier = Modifier.fillMaxHeight(),
-                verticalArrangement = Arrangement.SpaceBetween,
-                horizontalAlignment = Alignment.Start
+            Box (
+                modifier = Modifier.fillMaxHeight()
             ) {
-                Text(
-                    text = "$${productDetails.price}",
-                    modifier = Modifier
-                        .padding(top = dimensionResource(id = R.dimen.text_padding))
-                        .align(Alignment.End),
-                    fontSize = dimensionResource(id = R.dimen.large_font_size).value.sp,
-                    color = Color.DarkGray,
-                    fontWeight = FontWeight.ExtraBold,
-                )
+                Column {
+                    Text(
+                        text = "$${productDetails.price}",
+                        modifier = Modifier
+                            .padding(top = dimensionResource(id = R.dimen.text_padding))
+                            .align(Alignment.End),
+                        fontSize = dimensionResource(id = R.dimen.large_font_size).value.sp,
+                        color = Color.DarkGray,
+                        fontWeight = FontWeight.ExtraBold,
+                    )
+
+                    Text(
+                        text = if (productDetails.oldPrice > 0)
+                            "$${productDetails.oldPrice}"
+                        else
+                            "",
+                        modifier = Modifier
+                            .padding(top = dimensionResource(id = R.dimen.text_padding))
+                            .align(Alignment.End),
+                        fontSize = dimensionResource(id = R.dimen.large_font_size).value.sp,
+                        color = Color.LightGray,
+                        style = LocalTextStyle.current.copy(
+                            color = Color.Red
+                        ),
+                        textDecoration = TextDecoration.LineThrough,
+                        fontWeight = FontWeight.ExtraBold,
+                    )
+                }
+
 
                 Text(
-                    text = if (productDetails.stock > 1)
+                    text = if (productDetails.stock >= 1)
                         stringResource(R.string.in_stock)
                     else
                         stringResource(R.string.out_of_stock),
                     modifier = Modifier
                         .padding(bottom = dimensionResource(id = R.dimen.text_padding))
-                        .align(Alignment.End),
+                        .align(Alignment.BottomEnd),
                     fontSize = dimensionResource(id = R.dimen.medium_font_size).value.sp,
-                    color = Color.Red
+                    color = Color.Red,
+                    textAlign = TextAlign.Center,
+                    fontWeight = FontWeight.Bold,
                 )
             }
         }

@@ -3,8 +3,10 @@ package com.example.clothesstore.utils
 import android.content.Context
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -37,7 +39,8 @@ fun CoilImage(
             contentDescription = "Product image",
             error = painterResource(id = R.drawable.placeholder_image),
             contentScale = ContentScale.Inside,
-            modifier = Modifier.padding(12.dp)
+            modifier = modifier.padding(12.dp)
+                .clip(CircleShape)
         )
     }
 }

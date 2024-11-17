@@ -31,9 +31,13 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
+import com.example.clothesstore.presenter.basket.BasketView
+import com.example.clothesstore.presenter.basket.BasketViewModel
 import com.example.clothesstore.presenter.clothes_details.ClothesDetails
 import com.example.clothesstore.presenter.clothes_list.ClothesList
 import com.example.clothesstore.presenter.clothes_list.ClothesViewModel
+import com.example.clothesstore.presenter.wish_list.WishListView
+import com.example.clothesstore.presenter.wish_list.WishListViewModel
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter", "RestrictedApi")
 @Composable
@@ -79,10 +83,10 @@ fun Navigation() {
                         onClick = {
                             navController.navigate(screen.route) {
                                 popUpTo(navController.graph.findStartDestination().id) {
-                                    saveState = true
+                                    saveState = false
                                 }
                                 launchSingleTop = true
-                                restoreState = true
+                                restoreState = false
                             }
                         }
                     )
@@ -123,11 +127,22 @@ fun Navigation() {
             }
 
             composable<WishlistScreen> {
-
+                val viewModel: WishListViewModel = hiltViewModel()
+                val wishlistState by viewModel.wishlistState.collectAsStateWithLifecycle()
+                WishListView(
+                    wishlistState = wishlistState,
+                    wishListViewModel = viewModel
+                )
             }
 
             composable<BasketScreen> {
+                val viewModel: BasketViewModel = hiltViewModel()
+                val basketState by viewModel.basketState.collectAsStateWithLifecycle()
 
+                BasketView(
+                    basketState = basketState,
+                    basketViewModel = viewModel
+                )
             }
         }
     }

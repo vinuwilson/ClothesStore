@@ -12,6 +12,16 @@
     <string name="name">NAME</string>
     <string name="category">CATEGORY</string>
     <string name="amount_in_stock">AMOUNT IN STOCK</string>
-    <string name="wish_list">WISH LIST</string>
-    <string name="add_to_cart">ADD TO CART</string>
+    <string name="wish_list_btn">WISH LIST</string>
+    <string name="add_to_cart_btn">ADD TO CART</string>
+    <string name="wish_list_title">Wishlist</string>
+    <string name="basket_title">Basket</string>
+    <string name="basket_ShoppingCart">Basket Shopping card icon</string>
+    <string name="quantity">Qty</string>
+    <string name="check_out">CHECKOUT</string>
+    <string name="total">Total:</string>
+    <string name="added_to_wishlist">Added to wishlist!</string>
+    <string name="added_to_basket">Added to basket!</string>
+    <string name="empty_wishlist_message">Add products to your \'Wishlist\'</string>
+    <string name="empty_basket_message">Add products to your \'Basket\'</string>
 </resources>

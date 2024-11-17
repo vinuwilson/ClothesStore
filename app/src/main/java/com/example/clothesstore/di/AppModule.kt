@@ -1,5 +1,9 @@
 package com.example.clothesstore.di
 
+import android.content.Context
+import androidx.room.Room
+import com.example.clothesstore.data.db.ProductDao
+import com.example.clothesstore.data.db.ProductDatabase
 import com.example.clothesstore.data.remote.api.ProductApi
 import com.example.clothesstore.data.remote.repository.ProductRepositoryImp
 import com.example.clothesstore.data.remote.repository.RemoteProductListService
@@ -8,6 +12,7 @@ import com.example.clothesstore.utils.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -20,7 +25,8 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun provideProductListApi(retrofit: Retrofit): ProductApi = retrofit.create(ProductApi::class.java)
+    fun provideProductListApi(retrofit: Retrofit): ProductApi =
+        retrofit.create(ProductApi::class.java)
 
     @Singleton
     @Provides
@@ -36,5 +42,21 @@ class AppModule {
         service: RemoteProductListService
     ): ProductRepository =
         ProductRepositoryImp(service)
+
+    @Singleton
+    @Provides
+    fun provideWishListDao(database: ProductDatabase): ProductDao = database.wishListDao()
+
+    @Singleton
+    @Provides
+    fun provideWishListDatabase(
+        @ApplicationContext context: Context
+    ): ProductDatabase = Room.databaseBuilder(
+        context,
+        ProductDatabase::class.java,
+        "product_db"
+    )
+        .fallbackToDestructiveMigration()
+        .build()
 
 }

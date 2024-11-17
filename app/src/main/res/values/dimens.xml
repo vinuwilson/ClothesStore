@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="card_view_height">250.dp</dimen>
+    <dimen name="card_view_height">270.dp</dimen>
     <dimen name="card_view_padding">20.dp</dimen>
     <dimen name="card_view_elevation">5.dp</dimen>
     <dimen name="text_padding">12.dp</dimen>
@@ -8,8 +8,10 @@
     <dimen name="large_font_size">22.sp</dimen>
     <dimen name="favourite_padding">5.sp</dimen>
     <dimen name="medium_font_size">18.sp</dimen>
-    <dimen name="extra_large_font_size">26.sp</dimen>
+    <dimen name="extra_large_font_size">30.sp</dimen>
     <dimen name="divider_thickness">1.dp</dimen>
     <dimen name="app_padding">12.dp</dimen>
+    <dimen name="text_padding_small">6.dp</dimen>
     <dimen name="button_text_padding">6.dp</dimen>
+    <dimen name="message_padding_top">100.dp</dimen>
 </resources>

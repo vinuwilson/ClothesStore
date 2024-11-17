@@ -1,5 +1,6 @@
 package com.example.clothesstore.presenter.clothes_details.components
 
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -13,20 +14,28 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.clothesstore.R
 import com.example.clothesstore.domain.model.Product
+import com.example.clothesstore.domain.model.toBasketEntity
+import com.example.clothesstore.presenter.basket.BasketViewModel
+import com.example.clothesstore.presenter.wish_list.WishListViewModel
 
 @Composable
 fun DetailsBottomView(
-    productDetails: Product
+    productDetails: Product,
+    wishListViewModel: WishListViewModel? = hiltViewModel(),
+    basketViewModel: BasketViewModel? = hiltViewModel()
 ) {
+    val context = LocalContext.current
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .background(MaterialTheme.colorScheme.surface),
+            .background(Color.LightGray),
         horizontalArrangement = Arrangement.SpaceEvenly,
         verticalAlignment = Alignment.Bottom
     ) {
@@ -35,10 +44,18 @@ fun DetailsBottomView(
             modifier = Modifier
                 .padding(dimensionResource(R.dimen.app_padding))
                 .weight(1f),
-            onClick = {}
+            onClick = {
+                wishListViewModel?.addToFavourite(productDetails)
+                Toast.makeText(
+                    context,
+                    context.getString(R.string.added_to_wishlist),
+                    Toast.LENGTH_SHORT
+                )
+                    .show()
+            }
         ) {
             Text(
-                text = stringResource(R.string.wishlist),
+                text = stringResource(R.string.wish_list_btn),
                 color = Color.DarkGray,
                 modifier = Modifier.padding(dimensionResource(R.dimen.button_text_padding))
             )
@@ -49,11 +66,19 @@ fun DetailsBottomView(
             modifier = Modifier
                 .padding(dimensionResource(R.dimen.app_padding))
                 .weight(1f),
-            onClick = {}
+            onClick = {
+                basketViewModel?.addToBasket(productDetails.toBasketEntity())
+                Toast.makeText(
+                    context,
+                    context.getString(R.string.added_to_basket),
+                    Toast.LENGTH_SHORT
+                )
+                    .show()
+            }
         ) {
             Text(
                 modifier = Modifier.padding(dimensionResource(R.dimen.button_text_padding)),
-                text = stringResource(R.string.add_to_cart)
+                text = stringResource(R.string.add_to_cart_btn)
             )
         }
     }
@@ -71,6 +96,8 @@ fun DetailsBottomViewPreview() {
             stock = 3,
             oldPrice = 8.99,
             productId = "1"
-        )
+        ),
+        wishListViewModel = null,
+        basketViewModel = null
     )
 }

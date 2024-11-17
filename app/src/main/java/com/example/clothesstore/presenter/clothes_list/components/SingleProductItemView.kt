@@ -48,27 +48,24 @@ fun SingleProductItemView(
         ) {
 
             Column(
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxSize()
             ) {
 
                 CoilImage(
                     context = context,
-                    imageUri = product.image,
-                    modifier = Modifier
-                        .fillMaxSize()
+                    imageUri = product.image
                 )
 
                 Text(
                     text = product.name,
-                    modifier = Modifier.padding(start = dimensionResource(id = R.dimen.text_padding)),
-                    fontSize = dimensionResource(id = R.dimen.small_font_size).value.sp,
-                    color = Color.Gray,
-                    fontWeight = FontWeight.ExtraBold,
+                    modifier = Modifier.padding( start = dimensionResource(id = R.dimen.text_padding)),
+                    fontSize = dimensionResource(id = R.dimen.medium_font_size).value.sp,
+                    color = Color.Gray
                 )
 
                 Text(
                     text = "$${product.price}",
-                    modifier = Modifier.padding(start = dimensionResource(id = R.dimen.text_padding)),
+                    modifier = Modifier.padding( dimensionResource(id = R.dimen.text_padding)),
                     fontSize = dimensionResource(id = R.dimen.large_font_size).value.sp,
                     color = Color.DarkGray,
                     fontWeight = FontWeight.ExtraBold,
