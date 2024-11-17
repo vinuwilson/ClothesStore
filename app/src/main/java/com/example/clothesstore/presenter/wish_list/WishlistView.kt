@@ -21,14 +21,16 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.clothesstore.R
+import com.example.clothesstore.domain.model.Product
 import com.example.clothesstore.domain.model.toBasketEntity
 import com.example.clothesstore.presenter.basket.BasketViewModel
+import com.example.clothesstore.utils.SwipeToDeleteContainer
 import com.example.clothesstore.presenter.wish_list.components.WishlistItem
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun WishListView(
-    wishlistState: WishlistState,
+    wishlistState: List<Product>,
     wishListViewModel: WishListViewModel = hiltViewModel(),
     basketViewModel: BasketViewModel = hiltViewModel()
 ) {
@@ -48,16 +50,26 @@ fun WishListView(
             )
         }
     ) { innerPadding ->
-        if (wishlistState.wishlist?.isNotEmpty() == true) {
+        if (wishlistState.isNotEmpty() == true) {
             LazyColumn(
                 modifier = Modifier.padding(innerPadding)
             ) {
-                items(wishlistState.wishlist) { wishlistItem ->
-                    WishlistItem(
-                        wishlistItem = wishlistItem
-                    ) { product ->
-                        wishListViewModel.removeFromFavourite(product)
-                        basketViewModel.addToBasket(product.toBasketEntity())
+                items(
+                    items = wishlistState,
+                    key = { it.productId }
+                ) { wishlistItem ->
+                    SwipeToDeleteContainer(
+                        item = wishlistItem,
+                        onDelete = { product ->
+                            wishListViewModel.removeFromFavourite(product)
+                        }
+                    ) {
+                        WishlistItem(
+                            wishlistItem = wishlistItem
+                        ) { product ->
+                            wishListViewModel.removeFromFavourite(product)
+                            basketViewModel.insertOrUpdate(product.toBasketEntity())
+                        }
                     }
                 }
             }

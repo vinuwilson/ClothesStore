@@ -9,4 +9,6 @@ class AddToBasket @Inject constructor(
 ) {
 
     suspend fun addToBasket(product: BasketEntity) = repository.insertToBasket(product)
+
+    suspend fun updateQuantity(productId: String) = repository.updateQuantity(productId)
 }

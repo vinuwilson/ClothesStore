@@ -21,15 +21,19 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.clothesstore.R
+import com.example.clothesstore.domain.model.BasketEntity
 import com.example.clothesstore.presenter.basket.components.BasketBottomView
 import com.example.clothesstore.presenter.basket.components.BasketItem
+import com.example.clothesstore.utils.SwipeToDeleteContainer
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BasketView(
-    basketState: BasketState,
-    basketViewModel: BasketViewModel
+    basketState: List<BasketEntity>,
+    basketViewModel: BasketViewModel = hiltViewModel(),
+    totalPrice: Double?
 ) {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
@@ -46,7 +50,7 @@ fun BasketView(
             )
         }
     ) { innerPadding ->
-        if (basketState.basket?.isNotEmpty() == true) {
+        if (basketState.isNotEmpty() == true) {
             Column(
                 modifier = Modifier.fillMaxSize(),
                 verticalArrangement = Arrangement.SpaceBetween
@@ -54,14 +58,24 @@ fun BasketView(
                 LazyColumn(
                     modifier = Modifier.padding(innerPadding)
                 ) {
-                    items(basketState.basket) { basketItem ->
-                        BasketItem(
-                            basketItem = basketItem
-                        )
+                    items(
+                        items = basketState,
+                        key = { it.productId }
+                    ) { basketItem ->
+                        SwipeToDeleteContainer(
+                            item = basketItem,
+                            onDelete = { product ->
+                                basketViewModel.deleteItemFromBasket(product)
+                            }
+                        ) {
+                            BasketItem(
+                                basketItem = basketItem
+                            )
+                        }
                     }
                 }
                 BasketBottomView(
-                    price = 10.00
+                    price = totalPrice!!
                 )
             }
 

@@ -12,6 +12,7 @@ import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -83,10 +84,10 @@ fun Navigation() {
                         onClick = {
                             navController.navigate(screen.route) {
                                 popUpTo(navController.graph.findStartDestination().id) {
-                                    saveState = false
+                                    saveState = true
                                 }
                                 launchSingleTop = true
-                                restoreState = false
+                                restoreState = true
                             }
                         }
                     )
@@ -128,7 +129,7 @@ fun Navigation() {
 
             composable<WishlistScreen> {
                 val viewModel: WishListViewModel = hiltViewModel()
-                val wishlistState by viewModel.wishlistState.collectAsStateWithLifecycle()
+                val wishlistState = viewModel.wishlistState.collectAsStateWithLifecycle().value
                 WishListView(
                     wishlistState = wishlistState,
                     wishListViewModel = viewModel
@@ -137,11 +138,12 @@ fun Navigation() {
 
             composable<BasketScreen> {
                 val viewModel: BasketViewModel = hiltViewModel()
-                val basketState by viewModel.basketState.collectAsStateWithLifecycle()
-
+                val basketState = viewModel.basketState.collectAsStateWithLifecycle().value
+                val totalPrice by viewModel.total.collectAsStateWithLifecycle()
                 BasketView(
                     basketState = basketState,
-                    basketViewModel = viewModel
+                    basketViewModel = viewModel,
+                    totalPrice = totalPrice
                 )
             }
         }

@@ -14,7 +14,7 @@ data class BasketEntity(
     val productId: String,
     val stock: Int,
     val isFavourite: Boolean = false,
-    val quantity: Int = 0
+    val quantity: Int = 1
 )
 
 fun Product.toBasketEntity() = BasketEntity(

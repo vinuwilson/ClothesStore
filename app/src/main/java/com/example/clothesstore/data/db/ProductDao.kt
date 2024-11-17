@@ -33,4 +33,12 @@ interface ProductDao {
     @Delete
     suspend fun deleteItem(product: BasketEntity)
 
+    @Query("SELECT SUM(price * quantity) FROM basket_tbl")
+    fun getTotal(): Flow<Double>
+
+    @Query("SELECT * from basket_tbl WHERE productId= :productId")
+    suspend fun getItemById(productId: String): List<BasketEntity>
+
+    @Query("UPDATE basket_tbl SET quantity = quantity + 1 WHERE productId= :productId")
+    suspend fun updateQuantity(productId: String)
 }

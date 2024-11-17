@@ -67,7 +67,7 @@ fun DetailsBottomView(
                 .padding(dimensionResource(R.dimen.app_padding))
                 .weight(1f),
             onClick = {
-                basketViewModel?.addToBasket(productDetails.toBasketEntity())
+                basketViewModel?.insertOrUpdate(productDetails.toBasketEntity())
                 Toast.makeText(
                     context,
                     context.getString(R.string.added_to_basket),
