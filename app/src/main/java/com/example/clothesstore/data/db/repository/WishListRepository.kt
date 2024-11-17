@@ -9,7 +9,7 @@ class WishListRepository @Inject constructor(
     private val wishListDao: ProductDao
 ) {
 
-    suspend fun getFavourite(): Flow<List<Product>> = wishListDao.getFavourites()
+    fun getFavourite(): Flow<List<Product>> = wishListDao.getFavourites()
     suspend fun insertFavourite(product: Product) = wishListDao.insertFavourite(product)
     suspend fun deleteFavourite(product: Product) = wishListDao.deleteFavourite(product)
 
