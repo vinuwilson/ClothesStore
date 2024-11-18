@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="card_view_height">270.dp</dimen>
+    <dimen name="image_height">150.dp</dimen>
     <dimen name="card_view_padding">20.dp</dimen>
     <dimen name="card_view_elevation">5.dp</dimen>
     <dimen name="text_padding">12.dp</dimen>

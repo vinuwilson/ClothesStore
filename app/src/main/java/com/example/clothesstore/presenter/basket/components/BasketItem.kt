@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -22,6 +23,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.clothesstore.R
 import com.example.clothesstore.domain.model.BasketEntity
+import com.example.clothesstore.ui.theme.appColor
 import com.example.clothesstore.utils.CoilImage
 
 @Composable
@@ -49,7 +51,7 @@ fun BasketItem(
             }
             Column(
                 modifier = Modifier
-                    .padding(dimensionResource(R.dimen.app_padding))
+                    .padding(end = dimensionResource(R.dimen.app_padding))
                     .weight(.8F),
             ) {
                 HorizontalDivider(
@@ -59,8 +61,8 @@ fun BasketItem(
                 )
 
                 Text(
-                    color = Color.DarkGray,
-                    modifier = Modifier.padding(top = dimensionResource(R.dimen.text_padding_small)),
+                    color = MaterialTheme.colorScheme.onBackground,
+                    modifier = Modifier.padding(top = dimensionResource(R.dimen.text_padding)),
                     text = basketItem.name,
                     fontWeight = FontWeight.Bold
                 )
@@ -71,16 +73,16 @@ fun BasketItem(
                     horizontalArrangement = Arrangement.Start
                 ) {
                     Text(
-                        color = Color.Red,
+                        color = appColor,
                         modifier = Modifier
                             .weight(.5F)
                             .padding(top = dimensionResource(R.dimen.text_padding_small)),
                         text = "$${basketItem.price}",
-                        fontWeight = FontWeight.ExtraBold
+                        fontWeight = FontWeight.Bold
                     )
 
                     Text(
-                        color = Color.Red,
+                        color = appColor,
                         modifier = Modifier
                             .weight(.5F)
                             .padding(top = dimensionResource(R.dimen.text_padding_small)),

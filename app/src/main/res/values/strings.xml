@@ -24,4 +24,6 @@
     <string name="added_to_basket">Added to basket!</string>
     <string name="empty_wishlist_message">Add products to your \'Wishlist\'</string>
     <string name="empty_basket_message">Add products to your \'Basket\'</string>
+    <string name="remove">Remove</string>
+    <string name="details_not_found">Details not found!</string>
 </resources>

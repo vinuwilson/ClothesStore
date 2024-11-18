@@ -24,6 +24,7 @@ import com.example.clothesstore.domain.model.Product
 import com.example.clothesstore.domain.model.toBasketEntity
 import com.example.clothesstore.presenter.basket.BasketViewModel
 import com.example.clothesstore.presenter.wish_list.WishListViewModel
+import com.example.clothesstore.ui.theme.appColor
 
 @Composable
 fun DetailsBottomView(
@@ -56,13 +57,13 @@ fun DetailsBottomView(
         ) {
             Text(
                 text = stringResource(R.string.wish_list_btn),
-                color = Color.DarkGray,
+                color =  MaterialTheme.colorScheme.onBackground,
                 modifier = Modifier.padding(dimensionResource(R.dimen.button_text_padding))
             )
         }
 
         Button(
-            colors = ButtonDefaults.buttonColors(Color.Red),
+            colors = ButtonDefaults.buttonColors(appColor),
             modifier = Modifier
                 .padding(dimensionResource(R.dimen.app_padding))
                 .weight(1f),

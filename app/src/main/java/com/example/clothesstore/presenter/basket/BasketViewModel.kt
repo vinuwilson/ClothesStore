@@ -22,7 +22,7 @@ import javax.inject.Inject
 class BasketViewModel @Inject constructor(
     private val addToBasket: AddToBasket,
     private val deleteItem: DeleteItem,
-    private val getAllItems: GetItems,
+    private val getItems: GetItems,
     private val getTotalAmount: GetTotalAmount
 ) : ViewModel() {
 
@@ -30,8 +30,6 @@ class BasketViewModel @Inject constructor(
     val basketState = _basketState.asStateFlow()
 
     private val _total = MutableStateFlow(0.0)
-//    val total = _total.asStateFlow()
-
     val total = _total
         .onStart { getTotal() }
         .stateIn(
@@ -46,14 +44,11 @@ class BasketViewModel @Inject constructor(
 
     private fun getAllBasketItems() {
         viewModelScope.launch {
-            getAllItems.getAllItemsFromBasket().collectLatest {
+            getItems.getAllItemsFromBasket().collectLatest {
                 _basketState.value = it
             }
         }
     }
-
-    fun deleteItemFromBasket(product: BasketEntity) =
-        viewModelScope.launch { deleteItem.deleteItemFromBasket(product) }
 
     private fun getTotal() {
         viewModelScope.launch {
@@ -65,11 +60,20 @@ class BasketViewModel @Inject constructor(
 
     fun insertOrUpdate(entity: BasketEntity) {
         viewModelScope.launch(Dispatchers.IO) {
-            val itemsFromDb = getAllItems.getItemById(entity.productId)
+            val itemsFromDb = getItems.getItemById(entity.productId)
             if(itemsFromDb.isEmpty())
                 addToBasket.addToBasket(entity)
             else
-                addToBasket.updateQuantity(entity.productId)
+                addToBasket.addQuantity(entity.productId)
+        }
+    }
+
+    fun deleteOrUpdate(entity: BasketEntity) {
+        viewModelScope.launch(Dispatchers.IO) {
+            if(entity.quantity == 1)
+                deleteItem.deleteItemFromBasket(entity)
+            else
+                deleteItem.deleteSingleItemFromBasket(entity.productId)
         }
     }
 }

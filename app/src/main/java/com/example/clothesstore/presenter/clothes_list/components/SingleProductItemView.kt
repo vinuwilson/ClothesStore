@@ -53,7 +53,8 @@ fun SingleProductItemView(
 
                 CoilImage(
                     context = context,
-                    imageUri = product.image
+                    imageUri = product.image,
+                    modifier = Modifier.height(dimensionResource(R.dimen.image_height))
                 )
 
                 Text(
@@ -67,8 +68,8 @@ fun SingleProductItemView(
                     text = "$${product.price}",
                     modifier = Modifier.padding( dimensionResource(id = R.dimen.text_padding)),
                     fontSize = dimensionResource(id = R.dimen.large_font_size).value.sp,
-                    color = Color.DarkGray,
-                    fontWeight = FontWeight.ExtraBold,
+                    color =  MaterialTheme.colorScheme.onBackground,
+                    fontWeight = FontWeight.Bold,
                 )
             }
             FavouriteIcon(

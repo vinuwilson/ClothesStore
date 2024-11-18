@@ -12,7 +12,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
@@ -24,8 +23,9 @@ import com.example.clothesstore.R
 import com.example.clothesstore.domain.model.Product
 import com.example.clothesstore.domain.model.toBasketEntity
 import com.example.clothesstore.presenter.basket.BasketViewModel
-import com.example.clothesstore.utils.SwipeToDeleteContainer
 import com.example.clothesstore.presenter.wish_list.components.WishlistItem
+import com.example.clothesstore.ui.theme.appColor
+import com.example.clothesstore.utils.SwipeToDeleteContainer
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -43,7 +43,7 @@ fun WishListView(
                     Text(
                         text = stringResource(id = R.string.wish_list_title),
                         fontWeight = FontWeight.Bold,
-                        color = Color.Red,
+                        color = appColor,
                         fontSize = dimensionResource(id = R.dimen.extra_large_font_size).value.sp
                     )
                 }
@@ -82,7 +82,7 @@ fun WishListView(
                         .fillMaxWidth()
                         .padding(top = dimensionResource(R.dimen.message_padding_top)),
                     textAlign = TextAlign.Center,
-                    color = Color.Red,
+                    color = appColor,
                     fontStyle = FontStyle.Italic,
                     text = stringResource(R.string.empty_wishlist_message)
                 )

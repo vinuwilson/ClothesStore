@@ -16,7 +16,8 @@ data class BottomNavigationItem<T : Any>(
     val route: T,
     val selectedIcon: ImageVector,
     val unSelectedIcon: ImageVector,
-    val badgeCount: Int? = null
+    val badgeCount: Int? = null,
+    val name : String
 )
 
 val bottomBarItem = listOf(
@@ -24,18 +25,21 @@ val bottomBarItem = listOf(
         title = R.string.catalogue,
         route = CatalogueScreen,
         selectedIcon = Icons.Filled.ContentPasteSearch,
-        unSelectedIcon = Icons.Outlined.ContentPasteSearch
+        unSelectedIcon = Icons.Outlined.ContentPasteSearch,
+        name = "CatalogueScreen"
     ),
     BottomNavigationItem(
         title = R.string.wishlist,
         route = WishlistScreen,
         selectedIcon = Icons.Filled.Favorite,
-        unSelectedIcon = Icons.Outlined.Favorite
+        unSelectedIcon = Icons.Outlined.Favorite,
+        name = "WishlistScreen"
     ),
     BottomNavigationItem(
         title = R.string.basket,
         route = BasketScreen,
         selectedIcon = Icons.Filled.ShoppingCart,
-        unSelectedIcon = Icons.Outlined.ShoppingCart
+        unSelectedIcon = Icons.Outlined.ShoppingCart,
+        name = "BasketScreen"
     )
 )

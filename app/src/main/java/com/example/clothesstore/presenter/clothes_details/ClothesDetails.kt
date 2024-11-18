@@ -11,13 +11,16 @@ import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.Text
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.example.clothesstore.R
 import com.example.clothesstore.presenter.clothes_details.components.DetailsBottomView
 import com.example.clothesstore.presenter.clothes_details.components.DetailsInfoView
 import com.example.clothesstore.presenter.clothes_details.components.DetailsTopView
@@ -70,7 +73,7 @@ fun ClothesDetails(
                 contentAlignment = Alignment.Center
 
             ) {
-//                Error
+                Text(text = stringResource(R.string.details_not_found))
             }
         }
     }

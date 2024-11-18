@@ -9,5 +9,5 @@ class GetFavourites @Inject constructor(
     private val repository: WishListRepository
 ) {
 
-    suspend fun getFavourites(): Flow<List<Product>> = repository.getFavourite()
+    fun getFavourites(): Flow<List<Product>> = repository.getFavourite()
 }

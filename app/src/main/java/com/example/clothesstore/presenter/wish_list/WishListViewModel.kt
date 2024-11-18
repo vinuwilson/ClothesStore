@@ -21,7 +21,6 @@ class WishListViewModel @Inject constructor(
     private val deleteFavourite: DeleteFavourite
 ) : ViewModel() {
 
-    //    private val _wishlistState = MutableStateFlow(WishlistState())
     private val _wishlistState = MutableStateFlow<List<Product>>(emptyList())
     val wishlistState = _wishlistState.asStateFlow()
 
@@ -30,13 +29,6 @@ class WishListViewModel @Inject constructor(
     }
 
     private fun getAllWishlist() {
-//        viewModelScope.launch(Dispatchers.IO) {
-//            _wishlistState.update {
-//                it.copy(
-//                    wishlist = getFavourites.getFavourites().first()
-//                )
-//            }
-//        }
         viewModelScope.launch(Dispatchers.IO) {
             getFavourites.getFavourites().collectLatest {
                 _wishlistState.value = it

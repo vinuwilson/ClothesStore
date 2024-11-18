@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.SwipeToDismissBox
 import androidx.compose.material3.SwipeToDismissBoxState
 import androidx.compose.material3.SwipeToDismissBoxValue
+import androidx.compose.material3.Text
 import androidx.compose.material3.rememberSwipeToDismissBoxState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -21,8 +22,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.clothesstore.ui.theme.appColor
 import kotlinx.coroutines.delay
+import com.example.clothesstore.R
 
 @Composable
 fun <T> SwipeToDeleteContainer(
@@ -75,7 +79,7 @@ fun DeleteBackground(
     swipeDismissState: SwipeToDismissBoxState
 ) {
     val color = if (swipeDismissState.dismissDirection == SwipeToDismissBoxValue.EndToStart) {
-        Color.Red
+        appColor
     } else Color.Transparent
 
     Box(
@@ -84,5 +88,10 @@ fun DeleteBackground(
             .background(color)
             .padding(16.dp),
         contentAlignment = Alignment.CenterEnd
-    ) {}
+    ) {
+        Text(
+            color = Color.White,
+            text = stringResource(R.string.remove)
+        )
+    }
 }

@@ -9,4 +9,6 @@ class DeleteItem @Inject constructor(
 ) {
 
     suspend fun deleteItemFromBasket(product: BasketEntity) = repository.deleteItem(product)
+
+    suspend fun deleteSingleItemFromBasket(productId: String) = repository.removeQuantity(productId)
 }

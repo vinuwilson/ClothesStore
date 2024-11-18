@@ -6,10 +6,10 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconToggleButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.stringResource
 import com.example.clothesstore.R
+import com.example.clothesstore.ui.theme.appColor
 
 @Composable
 fun FavouriteIcon(
@@ -23,7 +23,7 @@ fun FavouriteIcon(
     ) {
         if (isFavourite) {
             Icon(
-                tint = Color.Red,
+                tint = appColor,
                 modifier = modifier.graphicsLayer {
                     scaleX = 1.3f
                     scaleY = 1.3f

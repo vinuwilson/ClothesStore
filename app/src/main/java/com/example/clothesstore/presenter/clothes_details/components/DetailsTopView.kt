@@ -24,6 +24,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.clothesstore.R
+import com.example.clothesstore.ui.theme.appColor
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -43,7 +44,7 @@ fun DetailsTopView(
         ) {
             Icon(
                 Icons.Filled.Close,
-                tint = Color.Red,
+                tint = appColor,
                 contentDescription = stringResource(R.string.model_close_icon),
                 modifier = Modifier
                     .clickable {
@@ -62,7 +63,7 @@ fun DetailsTopView(
                 textAlign = TextAlign.Center,
                 text = stringResource(R.string.product_details),
                 fontSize = dimensionResource(id = R.dimen.large_font_size).value.sp,
-                color = Color.Red,
+                color = appColor,
                 fontWeight = FontWeight.Bold,
             )
         }

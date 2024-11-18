@@ -12,6 +12,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ShoppingCartCheckout
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -26,6 +27,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.clothesstore.R
 import com.example.clothesstore.domain.model.Product
+import com.example.clothesstore.ui.theme.appColor
 import com.example.clothesstore.utils.CoilImage
 
 @Composable
@@ -54,7 +56,7 @@ fun WishlistItem(
             }
             Column(
                 modifier = Modifier
-                    .padding(dimensionResource(R.dimen.app_padding))
+                    .padding(end = dimensionResource(R.dimen.app_padding))
                     .weight(.8F),
             ) {
                 HorizontalDivider(
@@ -68,7 +70,7 @@ fun WishlistItem(
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                     Text(
-                        color = Color.DarkGray,
+                        color =  MaterialTheme.colorScheme.onBackground,
                         modifier = Modifier.padding(top = dimensionResource(R.dimen.text_padding_small)),
                         text = wishlistItem.name,
                         fontWeight = FontWeight.Bold
@@ -77,15 +79,15 @@ fun WishlistItem(
                         modifier = Modifier.clickable {
                             onItemMoveToCart(wishlistItem)
                         },
-                        tint = Color.Red,
+                        tint = appColor,
                         imageVector = Icons.Default.ShoppingCartCheckout,
                         contentDescription = stringResource(R.string.basket_ShoppingCart)
                     )
                 }
 
                 Text(
-                    color = Color.Red,
-                    modifier = Modifier.padding(top = dimensionResource(R.dimen.text_padding_small)),
+                    color = appColor,
+                    modifier = Modifier.padding(top = dimensionResource(R.dimen.text_padding)),
                     text = "$${wishlistItem.price}",
                     fontWeight = FontWeight.ExtraBold
                 )

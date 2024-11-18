@@ -15,7 +15,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.ViewModel
@@ -38,6 +37,7 @@ import com.example.clothesstore.presenter.clothes_list.ClothesList
 import com.example.clothesstore.presenter.clothes_list.ClothesViewModel
 import com.example.clothesstore.presenter.wish_list.WishListView
 import com.example.clothesstore.presenter.wish_list.WishListViewModel
+import com.example.clothesstore.ui.theme.appColor
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter", "RestrictedApi")
 @Composable
@@ -46,23 +46,26 @@ fun Navigation() {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
 
+    val badgeViewModel: BottomBarViewModel = hiltViewModel()
+    val badgeCounts = badgeViewModel.badgeCounts.collectAsStateWithLifecycle().value
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         bottomBar = {
             NavigationBar {
                 bottomBarItem.forEach { screen ->
+                    val badgeCount = badgeCounts[screen.name] ?: 0
                     val isSelected =
                         currentDestination?.hierarchy?.any { it.hasRoute(screen.route::class) } == true
                     NavigationBarItem(
                         colors = NavigationBarItemDefaults.colors(
-                            selectedIconColor = Color.Red,
+                            selectedIconColor = appColor,
                         ),
                         icon = {
                             BadgedBox(
                                 badge = {
-                                    if (screen.badgeCount != null) {
+                                    if (badgeCount > 0) {
                                         Badge {
-                                            Text(text = screen.badgeCount.toString())
+                                            Text(text = badgeCount.toString())
                                         }
                                     }
                                 }

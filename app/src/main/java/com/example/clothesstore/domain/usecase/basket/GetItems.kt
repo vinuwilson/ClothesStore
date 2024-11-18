@@ -10,4 +10,6 @@ class GetItems @Inject constructor(
     fun getAllItemsFromBasket() = repository.getAllItems()
 
     suspend fun getItemById(productId: String) = repository.getItemById(productId)
+
+    fun getBasketCount() = repository.getBasketCount()
 }
