@@ -37,9 +37,9 @@ Android app built with jetpack compose that displays data from the remote data s
 ## 3. Architecture:
 
 #   Clean Architecture Layers:
-    *   Presentation Layer: Jetpack Compose UI interacting with ViewModels.
-    *   Domain Layer: Use Cases handling the business logic.
-    *   Data Layer: Repository pattern for data handling (remote and local).
+    * Presentation Layer: Jetpack Compose UI interacting with ViewModels.
+    * Domain Layer: Use Cases handling the business logic.
+    * Data Layer: Repository pattern for data handling (remote and local).
 #   SOLID Principles: Ensures code flexibility and maintainability.
 
 ## 4. Implementation:
@@ -53,10 +53,20 @@ Android app built with jetpack compose that displays data from the remote data s
 
 ## Further enhancements
 
+    * Supporting dark mode.
+    * Checking stck count before adding items into the basket
     * Furthermore cosmetics and refactoring is an endless thought.
+
+# Note: The application was created using the latest Android Studio version, Ladybug. It may not be fully compatible with older versions of Android Studio.
 
 ## Snapshots
 
+![Screenshot-1.png](Screenshots%2FScreenshot-1.png)
 
+![Screenshot-2.png](Screenshots%2FScreenshot-2.png)
+
+![Screenshot-3.png](Screenshots%2FScreenshot-3.png)
+
+![Screenshot-4.png](Screenshots%2FScreenshot-4.png)
 
 
