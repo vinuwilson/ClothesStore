@@ -8,24 +8,24 @@ Android app built with jetpack compose that displays data from the remote data s
 
 ## 1. Technology Stack:
 
-# 1.  UI Layer
+### 1.  UI Layer
 
     * Jetpack Compose: For building declarative and reactive UIs.
     * Material Design 3: Ensures a modern, visually appealing interface.
 
-# 2.  Data Layer
+### 2.  Data Layer
 
     * Retrofit: To fetch data from the remote API.
     * Room Database: For local caching of clothing data.
     * Kotlin Coroutines & Flow: For asynchronous programming and reactive data streams.
 
-# 3.  Dependency Injection
+### 3.  Dependency Injection
 
     * Hilt: Simplifies dependency injection for a clean separation of concerns
 
-# 4.  Kotlin
-# 5.  mockk - for unit testing
-# 6.  Coil - Image Loader library.
+### 4.  Kotlin
+### 5.  mockk - for unit testing
+### 6.  Coil - Image Loader library.
 
 ## 2. Features:
 
@@ -36,11 +36,11 @@ Android app built with jetpack compose that displays data from the remote data s
 
 ## 3. Architecture:
 
-#   Clean Architecture Layers:
+###   Clean Architecture Layers:
     * Presentation Layer: Jetpack Compose UI interacting with ViewModels.
     * Domain Layer: Use Cases handling the business logic.
     * Data Layer: Repository pattern for data handling (remote and local).
-#   SOLID Principles: Ensures code flexibility and maintainability.
+###   SOLID Principles: Ensures code flexibility and maintainability.
 
 ## 4. Implementation:
 
@@ -53,11 +53,10 @@ Android app built with jetpack compose that displays data from the remote data s
 
 ## Further enhancements
 
-    * Supporting dark mode.
-    * Checking stck count before adding items into the basket
+    * Checking stock count before adding items into the basket.
     * Furthermore cosmetics and refactoring is an endless thought.
 
-# Note: The application was created using the latest Android Studio version, Ladybug. It may not be fully compatible with older versions of Android Studio.
+### Note: The application was created using the latest Android Studio version, Ladybug. It may not be fully compatible with older versions of Android Studio.
 
 ## Snapshots
 
