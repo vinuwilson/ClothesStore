@@ -61,12 +61,12 @@ Android app built with jetpack compose that displays data from the remote data s
 
 ## Snapshots
 
-![Screenshot-1.png](Screenshots%2FScreenshot-1.png)
+![Screenshot-1.png](Screenshots/Screenshot-1.png)
 
-![Screenshot-2.png](Screenshots%2FScreenshot-2.png)
+![Screenshot-2.png](Screenshots/Screenshot-2.png)
 
-![Screenshot-3.png](Screenshots%2FScreenshot-3.png)
+![Screenshot-3.png](Screenshots/Screenshot-3.png)
 
-![Screenshot-4.png](Screenshots%2FScreenshot-4.png)
+![Screenshot-4.png](Screenshots/Screenshot-4.png)
 
 
