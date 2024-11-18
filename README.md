@@ -26,6 +26,7 @@ Android app built with jetpack compose that displays data from the remote data s
 ### 4.  Kotlin
 ### 5.  mockk - for unit testing
 ### 6.  Coil - Image Loader library.
+### 7.  API - https://api.npoint.io/0f78766a6d68832d309d
 
 ## 2. Features:
 
